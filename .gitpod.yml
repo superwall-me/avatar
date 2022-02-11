@@ -3,7 +3,7 @@
 # and commit this file to your remote git repository to share the goodness with others.
 
 tasks:
-  - init: yarn install
+  - init: yarn install && npm install -g @cloudflare/wranglerwrangler login
     command: yarn dev
 vscode:
   extensions:

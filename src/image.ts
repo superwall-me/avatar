@@ -29,7 +29,7 @@ function generateGradient(username: string, text: string, width: number, height:
   avatar = avatar.replace(/(\$WIDTH)/g, width)
   avatar = avatar.replace(/(\$HEIGHT)/g, height)
 
-  avatar = avatar.replace(/(\$TEXT)/g, text)
+  avatar = avatar.replace(/(\$TEXT)/g, text.replace(/[^\x00-\x7F]/g, "").replace("\"", ""))
   // Hack for https://github.com/lovell/sharp/issues/1996
   if (pngAdjustment) {
     avatar = avatar.replace(/(\$DY)/g, (height * 0.9) / text.length * .35)
@@ -44,7 +44,7 @@ function parseSize(size: string) {
   if (size && size.match(/^-?\d+$/) && parseInt(size, 10) <= maxSize) {
     return parseInt(size, 10)
   }
-  return 120
+  return 100
 }
 
 exports.generateSVG = function(username: string, text: string, widthString: string, heightString:string) {

@@ -5,7 +5,9 @@ App Icons provides an easy way to get iOS App icons into your service or applica
 
 ## How to use App Icons
 
-To fetch an App Icon or generate a nice looking-fallback just embed following URL `https://icons.superwall.com/<app-icon|bundle-identifier|name>`. Now you can append a bundle identifier, id or name to generate an icon
+To fetch an App Icon or generate a nice looking-fallback just embed following URL:
+
+`https://icons.superwall.com/<app-icon|bundle-identifier|name>`
 
 You will receive a `png` image with a size of 100*100px
 
@@ -51,3 +53,7 @@ We got all that covered for you.
 Just click this button:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/superwall-me/avatar)
+
+### Credits
+
+Huge shoutout to @tobiaslins for creating the [original avatar project](https://github.com/tobiaslins/avatar)!

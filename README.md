@@ -1,67 +1,53 @@
-# avatar ![](https://avatar.tobi.sh/avatar?size=20) ![](https://avatar.tobi.sh/1?size=20) ![](https://avatar.tobi.sh/github?size=20) ![](https://avatar.tobi.sh/love?size=20) ![](https://avatar.tobi.sh/node?size=20)
-![](https://metrics.tobi.sh/avatar/count?text=%20Avatars%20generated%20)
+# App Icons by Superwall <img src="https://avatars.superwall.dev/id1446224156?size=20" height="40px" width="40px" />  <img src="https://avatars.superwall.dev/com.facebook.Facebook" height="40px" width="40px" /> <img src="https://avatars.superwall.dev/id1138400067?size=20" height="40px" width="40px" /> 
 
-Avatar generates beautiful gradient avatars for your app or homepage (for example if they didn't upload one)
+App Icons provides an easy way to get iOS App icons into your service or application. Simply pass the iOS ID, Bundle Identifier, or Name and we'll get the Icon or a nice-looking alternative. 
 
-Avatar is built on top of [`micro`](https://github.com/zeit/micro) and is hosted on [Heroku](https://heroku.com)
 
-## How to use avatar
+## How to use App Icons
 
-To generate an avatar just embed following URL `https://avatar.tobi.sh/`. Now you can append a username to generate an avatar
+To fetch an App Icon or generate a nice looking-fallback just embed following URL `https://icons.superwall.com/<app-icon|bundle-identifier|name>`. Now you can append a bundle identifier, id or name to generate an icon
 
-You will receive a `png` image with a size of 120*120px
+You will receive a `png` image with a size of 100*100px
 
-Each name will generate a unique `avatar`. Just replace `tobiaslins` with an `username` or `email`
+## Examples
 
-### PNG avatar
+
+### Bundle Identifer
 ```
-https://avatar.tobi.sh/tobiaslins
-```
-
-![Avatar for tobiaslins](https://avatar.tobi.sh/tobiaslins)
-
-### Custom size
-
-```
-https://avatar.tobi.sh/tobiaslins?size=30
+https://icons.superwall.com/com.facebook.Facebook
 ```
 
-![Avatar for tobiaslins](https://avatar.tobi.sh/tobiaslins?size=30)
+<img src="https://avatars.superwall.dev/com.facebook.Facebook" height="60px" width="60px" />
 
-### SVG avatar
-It is possible to receive an svg avatar by adding the extension `.svg` or the parameter `type=svg`
-
+### Itunes Id
 ```
-https://avatar.tobi.sh/tobiaslins.svg
-https://avatar.tobi.sh/tobiaslins?type=svg
+https://icons.superwall.com/id1446224156
 ```
 
-### Add initials
-It is possible to add initials or a text to the avatar by adding the `text` parameter.
 
-*Feature only working with SVG*
+This is the Itunes Id which can be found a the ends of urls like this:  
+`https://apps.apple.com/us/app/personal-trainer-fitnessai/id1446224156`
 
-```
-https://avatar.tobi.sh/tobiaslins.svg?text=TL
-```
-![Avatar for tobiaslins](https://avatar.tobi.sh/tobiaslins.svg?text=TL)
+<img src="https://avatars.superwall.dev/id1446224156" height="60px" width="60px" />
 
-### Random avatar
-If you just want to use random avatars without providing usernames, you can use the root endpoint
+### App Name
 
 ```
-https://avatar.tobi.sh/
+https://icons.superwall.com/Facebook
 ```
-![Random Avatar](https://avatar.tobi.sh?size=50)
+
+Since we don't have the bundle indentifier, we'll genreate a fallback using a gradient & first letter
+
+<img src="https://avatars.superwall.dev/Facebook" height="60px" width="60px" />
 
 ## Usecase
-Are you creating a new app/website with an user system?
+Are you creating a new app/website involving iOS Apps? 
 
-If your user doesn't want to load a custom profile picture - you can show him a unique generated avatar
+Do you want to display the app's icons or a nice looking placeholder? This service takes care of it. 
 
 ### Deploy to Heroku
 Do you want to deploy avatar to Heroku?
 We got all that covered for you.
 Just click this button:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/tobiaslins/avatar)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/superwall-me/avatar)

@@ -30,5 +30,5 @@ module.exports = (req: IncomingMessage, res: ServerResponse) => {
     return image.generateSVG(pathname.replace(svgExt, ''), query.text || '', query.size, height || '')
   }
   res.setHeader('Content-Type', 'image/png')
-  return image.generatePNG(pathname.replace(pngExt, ''), query.size, height || '')
+  return image.generatePNG(pathname.replace(pngExt, ''), query.text || '', query.size, height || '')
 }

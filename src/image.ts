@@ -6,7 +6,7 @@ const Color = require('color')
 const svg = require('./svg')
 const helper = require('./helper')
 
-function generateGradient(username: string, text: string, width: number, height: number) {
+function generateGradient(username: string, text: string, width: number, height: number, pngAdjustment: boolean = false) {
   const hash = crypto.createHash('md5').update(username).digest('hex')
 
   let firstColor = helper.hashStringToColor(hash)
@@ -30,8 +30,11 @@ function generateGradient(username: string, text: string, width: number, height:
   avatar = avatar.replace(/(\$HEIGHT)/g, height)
 
   avatar = avatar.replace(/(\$TEXT)/g, text)
+  // Hack for https://github.com/lovell/sharp/issues/1996
+  if (pngAdjustment) {
+    avatar = avatar.replace(/(\$DY)/g, (height * 0.9) / text.length * .35)
+  }
   avatar = avatar.replace(/(\$FONTSIZE)/g, (height * 0.9) / text.length)
-
 
   return avatar
 }
@@ -50,9 +53,10 @@ exports.generateSVG = function(username: string, text: string, widthString: stri
   return generateGradient(username, text, width, height)
 }
 
-exports.generatePNG = function(username: string, widthString: string, heightString: string) {
+exports.generatePNG = function(username: string, text: string, widthString: string, heightString: string) {
   let width = parseSize(widthString)
   let height = parseSize(heightString)
-  const svg = generateGradient(username, '', width, height)
+  const svg = generateGradient(username, text, width, height, true)
+  console.log(`svg`, svg)
   return sharp(new Buffer(svg)).png()
 }

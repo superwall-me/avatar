@@ -15,7 +15,8 @@ module.exports = async (req: IncomingMessage, res: ServerResponse) => {
     return ''
   }
   if (pathname === '/') {
-    pathname = Math.random().toString()
+    res.setHeader('Location', 'https://superwall.com')
+    res.statusCode = 301
   } else {
     res.setHeader('Cache-Control', 'max-age=2592000, public')
     res.setHeader('Last-Modified', 'Mon, 03 Jan 2011 17:45:57 GMT')
@@ -35,7 +36,7 @@ module.exports = async (req: IncomingMessage, res: ServerResponse) => {
     const app: any = await lookupApplication(undefined, pathname.replace('/', ''))
     console.log(app)
     if (app && app.results && app.results.length >= 1) {
-      let url = app.results[0].artworkUrl100
+      let url = app.results[0]?.artworkUrl100
       if (url) {
         res.setHeader('Location', url)
         res.statusCode = 301
@@ -44,11 +45,13 @@ module.exports = async (req: IncomingMessage, res: ServerResponse) => {
     }
   } else if (pathname.replace("id", "").replace("/", "").match(/^[0-9]+$/)) {
     const app: any = await lookupApplication(pathname.replace("id", "").replace("/",""))
+    if (app && app.results && app.results.length >= 1) {
     let url = app.results[0].artworkUrl100
-    if (url) {
-      res.setHeader('Location', url)
-      res.statusCode = 301
-      return ''
+      if (url) {
+        res.setHeader('Location', url)
+        res.statusCode = 301
+        return ''
+      }
     }
     text = ''
   }
